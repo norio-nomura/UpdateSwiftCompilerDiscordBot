@@ -10,4 +10,4 @@ RUN cd /UpdateSwiftCompilerDiscordBot && \
     rm -rf UpdateSwiftCompilerDiscordBot
 
 USER swiftbot
-CMD ["UpdateSwiftCompilerDiscordBot", "serve", "--env", "production", "--port", "$PORT", "--hostname", "0.0.0.0"]
+CMD UpdateSwiftCompilerDiscordBot serve --env production --port $PORT --hostname 0.0.0.0
