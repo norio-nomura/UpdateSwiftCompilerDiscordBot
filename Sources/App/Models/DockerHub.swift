@@ -1,10 +1,20 @@
 import Vapor
 
 enum DockerHub {
+    struct Image: CustomStringConvertible {
+        let name: String
+        let tag: String
+        var description: String { return "\(name):\(tag)" }
+    }
+
     struct ImagePushed: Decodable {
         let callback_url: String
         let push_data: PushedData
         let repository: Repository
+
+        var image: Image {
+            return .init(name: repository.repo_name, tag: push_data.tag)
+        }
     }
 
     struct PushedData: Decodable {
