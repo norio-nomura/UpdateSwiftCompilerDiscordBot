@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      args:
+        DOCKER_IMAGE: ${DOCKER_IMAGE}
+    ports:
+      - "8888:8888"
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      PORT: 8888
+    env_file: .env
+    volumes:
+      - .:/UpdateSwiftCompilerDiscordBot
+    command: ["UpdateSwiftCompilerDiscordBot"]

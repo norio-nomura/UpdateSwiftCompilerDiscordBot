@@ -1,0 +1,18 @@
+{
+  "name": "Update Swift Compiler Discord Bot",
+  "keywords": [
+    "swift",
+    "compiler",
+    "discord",
+    "bot",
+    "updater"
+  ],
+  "repository": "https://github.com/norio-nomura/UpdateSwiftCompilerDiscordappBot",
+  "stack": "container",
+  "env": {
+    "GITHUB_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "required": true
+    }
+  }
+}
