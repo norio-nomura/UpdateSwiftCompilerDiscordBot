@@ -53,6 +53,10 @@ final class WebhookController {
                     let rangeOfImage = regexForHerokuYML.firstMatchRanges(in: content)?[1] else {
                         return request.eventLoop.newSucceededFuture(result: .badRequest)
                 }
+                // Do not update `heroku.yml` if already using same version.
+                guard content[rangeOfImage] != image.description else {
+                    return request.eventLoop.newSucceededFuture(result: .ok)
+                }
 
                 content.replaceSubrange(rangeOfImage, with: image.description)
                 return try source.update(with: content, in: branch, message: "Use \(image)", on: request)
